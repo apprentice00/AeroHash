@@ -1,0 +1,85 @@
+# CLI > environment > selected YAML > these defaults.
+data:
+  dataset: weather
+  stations:
+  - weather
+  num_workers: 0
+  dataset_root: null
+model:
+  net: ts
+  pretrain: false
+  enc_layers: 1
+  hidden_dim: 128
+  nheads: 8
+  dim_feedforward: 256
+  dropout: 0.1
+  pre_norm: false
+  position_embedding: learned
+  use_tf: true
+  quant_mode: tanh
+  quant_scale_min: 1.0
+  quant_scale_max: 8.0
+  use_deriv: true
+  use_ch_attn: true
+training:
+  arch: query_opt
+  batch_size: 256
+  optim: AdamW
+  lr: 0.001
+  wd: 0.01
+  momen: 0.9
+  nesterov: true
+  gpu: 0
+  code_length:
+  - 96
+  num_samples: 2000
+  max_epoch: 5
+  max_iter: 120
+  early_stop_patience: 10
+  early_stop_min_iter: 40
+  lr_step:
+  - 90
+  lr_gamma: 0.1
+  val_freq: 5
+  topk: -1
+  seed: 42
+  device: null
+  cuda_visible_devices: 0,1
+loss:
+  gamma: 200
+  use_center: true
+  center_weight: 1.0
+  center_margin_mode: severity_freq
+  center_m0: 0.15
+  center_lambda: 0.5
+  center_gamma: 0.3
+  center_s: 12.0
+  center_lr: 0.001
+  use_tfc: true
+  tfc_weight: 0.5
+  use_ord: true
+  ord_weight: 0.1
+  ord_margin: 0.1
+  ord_smargin: 0.05
+  ord_neg_boost: 2.0
+  ord_warmup: 30
+  use_bitreg: false
+  bit_balance_weight: 0.1
+  bit_decorr_weight: 0.1
+evaluation:
+  use_val_select: true
+  ckpt: null
+  datadir: null
+  batch_size: 512
+  k:
+  - 10
+  - 50
+  - 100
+  outdir: null
+  device: null
+  code_length: 96
+output:
+  info: weather_ts
+  ckpt_root: checkpoints
+  ckpt_name: null
+  log_root: logs

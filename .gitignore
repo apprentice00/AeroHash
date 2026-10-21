@@ -1,0 +1,54 @@
+# Keep only the core model project at the repository root
+/*
+!/.gitignore
+!/README.md
+!/pyproject.toml
+!/src/
+!/configs/
+!/scripts/
+!/tests/
+!/data_processed/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Training / experiment outputs
+checkpoints/
+logs/
+*.log
+logs_*.txt
+runs_multiseed/
+
+# Large data artifacts (regenerable via aerohash preprocess)
+# Keep small configuration files (*.json); ignore large raw/processed data
+*.npy
+*.csv
+data_processed/*
+!data_processed/evaluate.py
+datasets/
+
+baseline/
+
+dataset/
+ablation/
+analysis/
+ablation_tfc_e1/
+# Packaging / test outputs
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+
+# Small synthetic regression inputs
+!tests/fixtures/*.csv
+
+tests/

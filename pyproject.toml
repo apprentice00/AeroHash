@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aerohash"
+version = "0.1.0"
+description = "Weather time-series hashing and retrieval"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "torch>=2.1", "pandas>=2.0", "PyYAML>=6", "loguru>=0.7", "tqdm>=4.60"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+aerohash = "aerohash.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"aerohash.config" = ["default.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
